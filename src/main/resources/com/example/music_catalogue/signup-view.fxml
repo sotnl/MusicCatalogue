@@ -5,32 +5,97 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane styleClass="auth-panel"
-           stylesheets="@styles.css"
-           xmlns="http://javafx.com/javafx/21"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.example.music_catalogue.controller.SignUpController">
+<StackPane
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.example.music_catalogue.controller.SignUpController"
+    prefWidth="460"
+    prefHeight="560">
 
-    <VBox styleClass="auth-card" maxWidth="360" maxHeight="380" alignment="CENTER_LEFT">
-        <children>
-            <Label text="Create Account" styleClass="auth-title" />
-            <Label text="Start your music collection" styleClass="auth-subtitle" />
-            <TextField fx:id="usernameField" promptText="Username" maxWidth="1.7976931348623157E308" />
+    <VBox
+        maxWidth="360"
+        spacing="0"
+        alignment="CENTER"
+        style="-fx-background-color: white; -fx-background-radius: 14; -fx-border-color: #e2e8f0; -fx-border-width: 1; -fx-border-radius: 14; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 18, 0, 0, 4);">
+
+        <!-- Blue accent bar at top -->
+        <HBox prefHeight="6" maxWidth="1.7976931348623157E308"
+              style="-fx-background-color: #2563eb; -fx-background-radius: 14 14 0 0;"/>
+
+        <VBox spacing="0" alignment="CENTER">
+            <padding>
+                <Insets top="32" right="40" bottom="32" left="40"/>
+            </padding>
+
+            <!-- Icon -->
+            <StackPane prefWidth="56" prefHeight="56" maxWidth="56"
+                       style="-fx-background-color: #eff6ff; -fx-background-radius: 28;">
+                <Label text="♫" style="-fx-font-size: 24px; -fx-text-fill: #2563eb;"/>
+            </StackPane>
+
+            <VBox spacing="0"><padding><Insets top="14"/></padding></VBox>
+
+            <Label text="Create Account"
+                   style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+
+            <VBox spacing="0"><padding><Insets top="5"/></padding></VBox>
+
+            <Label text="Start building your music collection"
+                   style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+
+            <VBox spacing="0"><padding><Insets top="24"/></padding></VBox>
+
+            <!-- Username -->
+            <Label text="Username"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #374151;"
+                   maxWidth="1.7976931348623157E308"/>
+            <VBox spacing="0"><padding><Insets top="5"/></padding></VBox>
+            <TextField fx:id="usernameField" promptText="Choose a username"
+                       maxWidth="1.7976931348623157E308"
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-padding: 9 12 9 12; -fx-font-size: 13px;"/>
+
             <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
-            <PasswordField fx:id="passwordField" promptText="Password" maxWidth="1.7976931348623157E308" />
+
+            <!-- Password -->
+            <Label text="Password"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #374151;"
+                   maxWidth="1.7976931348623157E308"/>
+            <VBox spacing="0"><padding><Insets top="5"/></padding></VBox>
+            <PasswordField fx:id="passwordField" promptText="Create a password"
+                           maxWidth="1.7976931348623157E308"
+                           style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-padding: 9 12 9 12; -fx-font-size: 13px;"/>
+
             <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
-            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" maxWidth="1.7976931348623157E308" />
+
+            <!-- Confirm Password -->
+            <Label text="Confirm Password"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #374151;"
+                   maxWidth="1.7976931348623157E308"/>
+            <VBox spacing="0"><padding><Insets top="5"/></padding></VBox>
+            <PasswordField fx:id="confirmPasswordField" promptText="Repeat your password"
+                           maxWidth="1.7976931348623157E308"
+                           style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 7; -fx-background-radius: 7; -fx-padding: 9 12 9 12; -fx-font-size: 13px;"/>
+
             <VBox spacing="0"><padding><Insets top="20"/></padding></VBox>
+
             <Button text="Create Account" onAction="#handleCreateAccount"
                     maxWidth="1.7976931348623157E308"
-                    styleClass="btn-primary"
-                    defaultButton="true" />
-            <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
-            <Button text="← Back to login" onAction="#handleBackToLogin"
-                    styleClass="auth-link" />
-        </children>
+                    defaultButton="true"
+                    style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 7; -fx-padding: 11 0 11 0; -fx-cursor: hand;"/>
+
+            <VBox spacing="0"><padding><Insets top="16"/></padding></VBox>
+
+            <HBox alignment="CENTER" spacing="6">
+                <Label text="Already have an account?"
+                       style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+                <Button text="Sign in" onAction="#handleBackToLogin"
+                        style="-fx-background-color: transparent; -fx-text-fill: #2563eb; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0; -fx-border-color: transparent; -fx-cursor: hand;"/>
+            </HBox>
+
+        </VBox>
     </VBox>
 </StackPane>

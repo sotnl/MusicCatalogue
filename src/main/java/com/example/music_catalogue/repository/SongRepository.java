@@ -75,7 +75,6 @@ public class SongRepository {
         }
     }
 
-    // -------------------------------------------------------------------------
 
     private Song map(ResultSet rs) throws SQLException {
         return new Song(

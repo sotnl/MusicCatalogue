@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -12,114 +13,147 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
 <VBox spacing="0"
-      stylesheets="@styles.css"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.music_catalogue.controller.MusicController">
+      fx:controller="com.example.music_catalogue.controller.MusicController"
+      style="-fx-background-color: #f1f5f9;">
 
     <padding>
-        <Insets top="24" right="24" bottom="24" left="24" />
+        <Insets top="20" right="22" bottom="16" left="22"/>
     </padding>
 
-    <!-- Header -->
-    <HBox alignment="CENTER_LEFT">
-        <Label text="♪  My Favorite Music Catalogue" styleClass="app-title" />
+    <HBox alignment="CENTER_LEFT" spacing="14"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #e2e8f0; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 14 20 14 20;">
+
+        <StackPane prefWidth="42" prefHeight="42"
+                   style="-fx-background-color: #eff6ff; -fx-background-radius: 21;">
+            <Label text="♪" style="-fx-font-size: 20px; -fx-text-fill: #2563eb;"/>
+        </StackPane>
+
+        <VBox spacing="2" HBox.hgrow="ALWAYS">
+            <Label text="My Music Catalogue"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+            <Label text="Manage your personal music collection"
+                   style="-fx-font-size: 11px; -fx-text-fill: #94a3b8;"/>
+        </VBox>
     </HBox>
-
-    <VBox spacing="0"><padding><Insets top="18"/></padding></VBox>
-
-    <!-- Form Card -->
-    <VBox styleClass="form-panel" spacing="14">
-
-        <Label text="SONG DETAILS" styleClass="section-label" />
-
-        <GridPane hgap="16" vgap="12">
-            <columnConstraints>
-                <ColumnConstraints minWidth="56" maxWidth="56" />
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="40" />
-                <ColumnConstraints minWidth="56" maxWidth="56" />
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="40" />
-            </columnConstraints>
-
-            <!-- Row 0: Title + Artist -->
-            <Label text="Title"  styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.valignment="CENTER" />
-            <TextField fx:id="titleField"  promptText="Song title"
-                       maxWidth="1.7976931348623157E308"
-                       GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
-            <Label text="Artist" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.valignment="CENTER" />
-            <TextField fx:id="artistField" promptText="Artist / Band"
-                       maxWidth="1.7976931348623157E308"
-                       GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" />
-
-            <!-- Row 1: Album + Year -->
-            <Label text="Album"  styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.valignment="CENTER" />
-            <TextField fx:id="albumField"  promptText="Album"
-                       maxWidth="1.7976931348623157E308"
-                       GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
-            <Label text="Year"   styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.valignment="CENTER" />
-            <TextField fx:id="yearField"   promptText="e.g. 2024"
-                       maxWidth="1.7976931348623157E308"
-                       GridPane.rowIndex="1" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" />
-
-            <!-- Row 2: Genre + Rating -->
-            <Label text="Genre"  styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.valignment="CENTER" />
-            <ComboBox fx:id="genreComboBox" promptText="Select genre"
-                      maxWidth="1.7976931348623157E308"
-                      GridPane.rowIndex="2" GridPane.columnIndex="1" />
-            <Label text="Rating" styleClass="field-label" GridPane.rowIndex="2" GridPane.columnIndex="2" GridPane.valignment="CENTER" />
-            <ComboBox fx:id="ratingComboBox" promptText="★ Rating"
-                      maxWidth="1.7976931348623157E308"
-                      GridPane.rowIndex="2" GridPane.columnIndex="3" />
-
-            <!-- Row 3: Notes full width -->
-            <Label text="Notes"  styleClass="field-label" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.valignment="TOP">
-                <padding><Insets top="10"/></padding>
-            </Label>
-            <TextArea fx:id="notesArea" promptText="Personal notes…"
-                      prefRowCount="2" wrapText="true"
-                      GridPane.rowIndex="3" GridPane.columnIndex="1" />
-        </GridPane>
-
-        <!-- Action bar -->
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <padding><Insets top="4"/></padding>
-            <Label text="ID" styleClass="field-label" />
-            <TextField fx:id="idField" editable="false" promptText="Auto"
-                       styleClass="text-field, id-field"
-                       prefWidth="64" maxWidth="64" />
-            <Region HBox.hgrow="ALWAYS" />
-            <Button text="Add Song" onAction="#handleAdd"    styleClass="btn-primary" />
-            <Button text="Update"   onAction="#handleUpdate" styleClass="btn-secondary" />
-            <Button text="Delete"   onAction="#handleDelete" styleClass="btn-danger" />
-            <Button text="Clear"    onAction="#handleClear"  styleClass="btn-secondary" />
-        </HBox>
-
-    </VBox>
-
-    <VBox spacing="0"><padding><Insets top="16"/></padding></VBox>
-
-    <!-- Table -->
-    <TableView fx:id="songTable" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="idColumn"     text="ID"      prefWidth="55"  />
-            <TableColumn fx:id="titleColumn"  text="Title"   prefWidth="210" />
-            <TableColumn fx:id="artistColumn" text="Artist"  prefWidth="165" />
-            <TableColumn fx:id="albumColumn"  text="Album"   prefWidth="165" />
-            <TableColumn fx:id="genreColumn"  text="Genre"   prefWidth="95"  />
-            <TableColumn fx:id="yearColumn"   text="Year"    prefWidth="68"  />
-            <TableColumn fx:id="ratingColumn" text="★"       prefWidth="52"  />
-            <TableColumn fx:id="notesColumn"  text="Notes"   prefWidth="240" />
-        </columns>
-    </TableView>
 
     <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
 
-    <!-- Pagination -->
-    <Pagination fx:id="songPagination" pageCount="1" maxPageIndicatorCount="7" />
+    <VBox spacing="12"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #e2e8f0; -fx-border-width: 1; -fx-border-radius: 10; -fx-padding: 16 20 16 20;">
+
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="SONG DETAILS"
+                   style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #2563eb;"/>
+            <Separator HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <GridPane hgap="14" vgap="9">
+            <columnConstraints>
+                <ColumnConstraints minWidth="50" maxWidth="50"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="40"/>
+                <ColumnConstraints minWidth="50" maxWidth="50"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="40"/>
+            </columnConstraints>
+
+            <Label text="Title"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.valignment="CENTER"/>
+            <TextField fx:id="titleField" promptText="Song title"
+                       maxWidth="1.7976931348623157E308"
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 7 10 7 10; -fx-font-size: 12px;"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+            <Label text="Artist"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.valignment="CENTER"/>
+            <TextField fx:id="artistField" promptText="Artist / Band"
+                       maxWidth="1.7976931348623157E308"
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 7 10 7 10; -fx-font-size: 12px;"
+                       GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS"/>
+
+            <Label text="Album"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.valignment="CENTER"/>
+            <TextField fx:id="albumField" promptText="Album name"
+                       maxWidth="1.7976931348623157E308"
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 7 10 7 10; -fx-font-size: 12px;"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"/>
+            <Label text="Year"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.valignment="CENTER"/>
+            <TextField fx:id="yearField" promptText="e.g. 2024"
+                       maxWidth="1.7976931348623157E308"
+                       style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 7 10 7 10; -fx-font-size: 12px;"
+                       GridPane.rowIndex="1" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS"/>
+
+            <Label text="Genre"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.valignment="CENTER"/>
+            <ComboBox fx:id="genreComboBox" promptText="Select genre"
+                      maxWidth="1.7976931348623157E308"
+                      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Rating"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="2" GridPane.valignment="CENTER"/>
+            <ComboBox fx:id="ratingComboBox" promptText="★ Rating"
+                      maxWidth="1.7976931348623157E308"
+                      GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <Label text="Notes"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #475569;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.valignment="TOP">
+                <padding><Insets top="8"/></padding>
+            </Label>
+            <TextArea fx:id="notesArea" promptText="Personal notes…"
+                      prefRowCount="2" wrapText="true"
+                      style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-font-size: 12px;"
+                      GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Separator/>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Label text="ID" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #94a3b8;"/>
+            <TextField fx:id="idField" editable="false" promptText="Auto"
+                       prefWidth="58" maxWidth="58"
+                       style="-fx-background-color: #f1f5f9; -fx-border-color: #e2e8f0; -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 6 10 6 10; -fx-font-size: 12px; -fx-text-fill: #94a3b8;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="＋ Add" onAction="#handleAdd"
+                    style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+            <Button text="✎ Update" onAction="#handleUpdate"
+                    style="-fx-background-color: #f0fdf4; -fx-text-fill: #16a34a; -fx-font-size: 12px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-border-color: #bbf7d0; -fx-border-width: 1; -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+            <Button text="✕ Delete" onAction="#handleDelete"
+                    style="-fx-background-color: #fef2f2; -fx-text-fill: #dc2626; -fx-font-size: 12px; -fx-font-weight: bold; -fx-background-radius: 6; -fx-border-color: #fecaca; -fx-border-width: 1; -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+            <Button text="↺ Clear" onAction="#handleClear"
+                    style="-fx-background-color: #f8fafc; -fx-text-fill: #64748b; -fx-font-size: 12px; -fx-background-radius: 6; -fx-border-color: #cbd5e1; -fx-border-width: 1; -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
+
+    <TableView fx:id="songTable" VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10; -fx-border-width: 1;">
+        <columns>
+            <TableColumn fx:id="idColumn"     text="ID"     prefWidth="50"/>
+            <TableColumn fx:id="titleColumn"  text="Title"  prefWidth="200"/>
+            <TableColumn fx:id="artistColumn" text="Artist" prefWidth="155"/>
+            <TableColumn fx:id="albumColumn"  text="Album"  prefWidth="155"/>
+            <TableColumn fx:id="genreColumn"  text="Genre"  prefWidth="90"/>
+            <TableColumn fx:id="yearColumn"   text="Year"   prefWidth="65"/>
+            <TableColumn fx:id="ratingColumn" text="★"      prefWidth="48"/>
+            <TableColumn fx:id="notesColumn"  text="Notes"  prefWidth="230"/>
+        </columns>
+    </TableView>
+
+    <VBox spacing="0"><padding><Insets top="8"/></padding></VBox>
+
+    <Pagination fx:id="songPagination" pageCount="1" maxPageIndicatorCount="7"
+                style="-fx-background-color: transparent;"/>
 
 </VBox>
