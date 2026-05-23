@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane styleClass="auth-panel"
+           stylesheets="@styles.css"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.music_catalogue.controller.SignUpController">
+
+    <VBox styleClass="auth-card" maxWidth="360" maxHeight="380" alignment="CENTER_LEFT">
+        <children>
+            <Label text="Create Account" styleClass="auth-title" />
+            <Label text="Start your music collection" styleClass="auth-subtitle" />
+            <TextField fx:id="usernameField" promptText="Username" maxWidth="1.7976931348623157E308" />
+            <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
+            <PasswordField fx:id="passwordField" promptText="Password" maxWidth="1.7976931348623157E308" />
+            <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" maxWidth="1.7976931348623157E308" />
+            <VBox spacing="0"><padding><Insets top="20"/></padding></VBox>
+            <Button text="Create Account" onAction="#handleCreateAccount"
+                    maxWidth="1.7976931348623157E308"
+                    styleClass="btn-primary"
+                    defaultButton="true" />
+            <VBox spacing="0"><padding><Insets top="12"/></padding></VBox>
+            <Button text="← Back to login" onAction="#handleBackToLogin"
+                    styleClass="auth-link" />
+        </children>
+    </VBox>
+</StackPane>
